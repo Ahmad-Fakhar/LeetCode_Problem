@@ -14,18 +14,18 @@ class Solution(object):
         #         x=y
         #     y+=1
         # return maxprofit
-        # left, right = 0, 1
-        # maxProfit = 0
+        left, right = 0, 1
+        maxProfit = 0
 
-        # while right < len(prices):
-        #     if prices[left] < prices[right]:
-        #         profit = prices[right] - prices[left]
-        #         maxProfit = max(maxProfit, profit)
-        #     else: 
-        #         left = right
-        #     right += 1
+        while right < len(prices):
+            if prices[left] < prices[right]:
+                profit = prices[right] - prices[left]
+                maxProfit = max(maxProfit, profit)
+            else: 
+                left = right
+            right += 1
         
-        # return maxProfit
+        return maxProfit
 
 
         # maxprofit = 0
@@ -36,13 +36,13 @@ class Solution(object):
         # return maxprofit
 
 
-        max_profit = 0
-        min_price = ('inf')  # Set min_price to positive infinity initially
+        # max_profit = 0
+        # min_price = ('inf')  # Set min_price to positive infinity initially
     
-        for price in prices:
-             min_price = min(min_price, price)  # Update min_price if a lower price is found
-             max_profit = max(max_profit, price - min_price)  # Calculate profit based on min_price
+        # for price in prices:
+        #      min_price = min(min_price, price)  # Update min_price if a lower price is found
+        #      max_profit = max(max_profit, price - min_price)  # Calculate profit based on min_price
 
-        return max_profit
+        # return max_profit
 
         
