@@ -6,7 +6,6 @@ class Solution:
             if arr[i] == 0 and arr[i - 1] == 0 and arr[i + 1] == 0:
                 arr[i] = 1
                 n -= 1
-                if n <= 0:
-                    return True
+
         
         return n <= 0
