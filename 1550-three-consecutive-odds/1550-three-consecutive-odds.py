@@ -9,3 +9,9 @@ class Solution:
             else:
                 count = 0
         return False  
+         
+        # count = 0 
+        # for i in arr:
+        #     if [i] % 2 != 0 and [i+1] % 2 != 0 and [i + 2] % !=0 :
+        #         count += 1
+        # return count == 1
