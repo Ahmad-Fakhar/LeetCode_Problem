@@ -1,12 +1,16 @@
-class Solution(object):
-    def jump(self, nums):
-        l, r =0,0
-        res = 0
-        while  r < (len(nums)-1) :
-            maxJ = 0
-            for i in range (l,r+1):
-                maxJ = max(maxJ,i+nums[i])
-            l=r+1
-            r=maxJ
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+        if len(nums) <= 1:
+            return 0
+        res = left = right = 0
+
+        while  right < (len(nums)-1) :
+            maxJump = 0
+
+            for i in range (left, right+1):
+                maxJump = max(maxJump, i+nums[i])
+            left = right+1
+            right = maxJump
             res+=1 
+
         return res
