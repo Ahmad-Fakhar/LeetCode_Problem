@@ -1,0 +1,25 @@
+import heapq
+
+class Solution:
+    def minCost(self, n: int, edges: List[List[int]]) -> int:
+        adj = collections.defaultdict(list)
+        for u, v, w in edges:
+            adj[u].append((v, w))
+            adj[v].append((u, w * 2))
+            
+        dist = [float('inf')] * n
+        dist[0] = 0
+        pq = [(0, 0)] # (current_weight, node)
+        
+        while pq:
+            d, u = heapq.heappop(pq)
+            
+            if d > dist[u]: continue
+            if u == n - 1: return d
+            
+            for v, w in adj[u]:
+                if d + w < dist[v]:
+                    dist[v] = d + w
+                    heapq.heappush(pq, (dist[v], v))
+                    
+        return -1
