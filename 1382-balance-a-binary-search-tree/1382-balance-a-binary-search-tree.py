@@ -1,26 +1,27 @@
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
-    def balanceBST(self, root: TreeNode) -> TreeNode:
-        def inOrderTraversal(node):
-            if not node:
-                return []
-            return inOrderTraversal(node.left) + [node.val] + inOrderTraversal(node.right)
+    def balanceBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        arr=[]
+        def inOrder( root):
+            if not root: return
+            inOrder(root.left)
+            arr.append(root)
+            inOrder(root.right)
+
+        def balanceBST(l, r):
+            if l>r: return None
+            m=(l+r)>>1
+            L=balanceBST(l, m-1)
+            R=balanceBST(m+1, r)
+            arr[m].left=L
+            arr[m].right=R
+            return arr[m]
+
+        inOrder(root)
+        return balanceBST(0, len(arr)-1)
         
-        def sortedArrayToBST(nums):
-            if not nums:
-                return None
-            mid = len(nums) // 2
-            root = TreeNode(nums[mid])
-            root.left = sortedArrayToBST(nums[:mid])
-            root.right = sortedArrayToBST(nums[mid+1:])
-            return root
-        
-        # Perform in-order traversal to get nodes in sorted order
-        sorted_nodes = inOrderTraversal(root)
-        # Construct a balanced BST from the sorted nodes
-        return sortedArrayToBST(sorted_nodes)
